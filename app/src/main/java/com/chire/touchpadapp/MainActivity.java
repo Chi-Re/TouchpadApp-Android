@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements WebSocketManager.
     private WebSocketManager webSocketManager;
     private TextView connectionStatus, messagesView;
     private EditText serverUrlInput;
-    private Button connectButton, clearButton, sendButton;
+    private Button connectButton;
 
     private GestureDetector gestureDetector;
     private ScaleGestureDetector scaleDetector;
@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity implements WebSocketManager.
         scaleDetector = new ScaleGestureDetector(this, new ScaleListener());
 
         // 初始化UI组件
-        //drawingView = findViewById(R.id.drawing_view);
-
         View touchArea = findViewById(R.id.touch_area);
         touchArea.setOnTouchListener((v, event) -> {
             // 传递给手势检测器
@@ -59,12 +57,9 @@ public class MainActivity extends AppCompatActivity implements WebSocketManager.
         messagesView = findViewById(R.id.messages_view);
         serverUrlInput = findViewById(R.id.server_url);
         connectButton = findViewById(R.id.connect_button);
-        clearButton = findViewById(R.id.clear_button);
-        sendButton = findViewById(R.id.send_button);
 
         // 设置初始状态
         updateConnectionStatus(false);
-        sendButton.setEnabled(false);
 
         // 连接按钮点击事件
         connectButton.setOnClickListener(v -> {
@@ -158,7 +153,6 @@ public class MainActivity extends AppCompatActivity implements WebSocketManager.
     public void onConnectionStatusChanged(boolean isConnected) {
         runOnUiThread(() -> {
             updateConnectionStatus(isConnected);
-            sendButton.setEnabled(isConnected);
 
             if (isConnected) {
                 addMessage("服务器连接成功");
