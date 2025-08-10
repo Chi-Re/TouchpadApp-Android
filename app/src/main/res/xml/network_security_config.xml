@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- 允许特定域名的明文通信 -->
+<!--    <domain-config cleartextTrafficPermitted="true">-->
+<!--        <domain includeSubdomains="true">192.168.1.12</domain>-->
+<!--    </domain-config>-->
+
+    <!-- 或者允许所有明文通信（不推荐） -->
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

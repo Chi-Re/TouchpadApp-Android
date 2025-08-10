@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-
+    implementation("com.squareup.okhttp3:okhttp:4.12.0") // WebSocket支持
     implementation(libs.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)
